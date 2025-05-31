@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "303056509610",
+    "project_id": "historiaclinica-1e84d",
+    "storage_bucket": "historiaclinica-1e84d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303056509610:android:20f89e92c86559a9eaced3",
+        "android_client_info": {
+          "package_name": "com.project.fisiocare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmzZVTsEX3Q4sB4Z4uhMWTG9ELE6yxiGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
