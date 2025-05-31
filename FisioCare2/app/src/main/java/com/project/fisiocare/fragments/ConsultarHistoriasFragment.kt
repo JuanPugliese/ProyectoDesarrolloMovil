@@ -24,6 +24,7 @@ class ConsultarHistoriasFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         val view = inflater.inflate(R.layout.fragment_consultar_historia, container, false)
         val viewModelFactory = HistoriaViewModelFactory(HistoriaRepositorySingleton.instance)
@@ -55,8 +56,17 @@ class ConsultarHistoriasFragment : Fragment() {
             this.adapter = adapter
         }
 
-        viewModel.historias.observe(viewLifecycleOwner) { adapter.updateData(it) }
-
+        viewModel.historias.observe(viewLifecycleOwner) { historias ->
+            println("👀 [Fragment] Recibidas ${historias?.size ?: 0} historias")
+            historias?.let {
+                println("🔄 Actualizando adapter con ${it.size} historias")
+                adapter.updateData(it)
+                if (it.isEmpty()) {
+                    // Muestra un mensaje o imagen cuando no hay historias
+                }
+            }
+        }
+        viewModel.historias.value?.let { adapter.updateData(it) }
         view.findViewById<FloatingActionButton>(R.id.fabAgregar).setOnClickListener {
             view.findNavController().navigate(R.id.action_consultarHistoriasFragment_to_crearHistoriaFragment)
         }

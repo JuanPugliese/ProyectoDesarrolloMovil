@@ -5,24 +5,36 @@ import androidx.lifecycle.MutableLiveData
 import com.project.fisiocare.model.Historia
 
 class HistoriaRepository {
-    private val listaHistorias = mutableListOf<Historia>()
-    private val historiasLiveData = MutableLiveData<List<Historia>>(listaHistorias)
+    private var listaHistorias = mutableListOf<Historia>() // Cambiado a var
+    private val historiasLiveData = MutableLiveData<List<Historia>>()
+
+    init {
+        historiasLiveData.value = emptyList()
+    }
 
     fun obtenerHistorias(): LiveData<List<Historia>> = historiasLiveData
 
     fun guardarHistoria(historia: Historia, callback: (Boolean) -> Unit) {
-        val index = listaHistorias.indexOfFirst { it.id == historia.id }
+        println("🔄 [Repository] Guardando historia: ${historia.paciente}")
+        val nuevaLista = ArrayList(listaHistorias) // Crear copia
+        val index = nuevaLista.indexOfFirst { it.id == historia.id }
+
         if (index != -1) {
-            listaHistorias[index] = historia
+            nuevaLista[index] = historia
         } else {
-            listaHistorias.add(historia)
+            nuevaLista.add(historia)
         }
+
+        listaHistorias = nuevaLista // Ahora funciona porque listaHistorias es var
+        historiasLiveData.postValue(nuevaLista)
         callback(true)
-        historiasLiveData.value = listaHistorias
+        println("📊 [Repository] Total historias después de guardar: ${listaHistorias.size}")
     }
 
     fun eliminarHistoria(historia: Historia) {
-        listaHistorias.remove(historia)
-        historiasLiveData.value = listaHistorias.toList()
+        val nuevaLista = ArrayList(listaHistorias)
+        nuevaLista.remove(historia)
+        listaHistorias = nuevaLista
+        historiasLiveData.postValue(nuevaLista)
     }
 }

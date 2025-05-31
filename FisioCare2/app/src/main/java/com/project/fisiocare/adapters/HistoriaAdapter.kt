@@ -77,12 +77,17 @@ class HistoriaAdapter(
 
     override fun getItemCount(): Int = historiasFiltradas.size
 
-    fun updateData(newList: List<Historia>) {
-        historias = newList
-        historiasFiltradas = newList
+    fun updateData(newHistorias: List<Historia>) {
+        println("🔄 Adapter recibió ${newHistorias.size} historias")
+        historias = newHistorias
+        historiasFiltradas = newHistorias.toList() // Asegúrate de hacer copia
         notifyDataSetChanged()
-    }
 
+        // Debug: Verifica el primer elemento
+        if (newHistorias.isNotEmpty()) {
+            println("📌 Primer elemento: ${newHistorias[0].paciente}")
+        }
+    }
     fun filtrarPorNombre(query: String) {
         val filtro = query.trim()
         historiasFiltradas = if (filtro.isEmpty()) historias
