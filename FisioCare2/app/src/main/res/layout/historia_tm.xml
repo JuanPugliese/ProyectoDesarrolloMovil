@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="12dp">
 
+    <Button
+        android:id="@+id/btnDescargar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Descargar Historia"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:background="@drawable/acceder_btn"
+        android:layout_gravity="bottom|center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="210dp"
+        android:translationZ="0dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="0dp"/>
+
     <LinearLayout
-        android:id="@+id/factura_card"
+        android:id="@+id/historia_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,7 +30,8 @@
         android:layout_marginHorizontal="20dp"
         android:gravity="center"
         android:background="@drawable/rounded_background">
-        <!-- COL1 -->
+
+        <!-- COL1 - Información principal -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +39,7 @@
             android:layout_weight="3"
             android:gravity="center"
             android:paddingHorizontal="5dp">
+
             <!-- Fecha -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,11 +56,33 @@
                     android:id="@+id/fechaText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fecha"
+                    android:text="2024-05-14"
                     android:layout_marginStart="8dp"
                     android:textColor="#2D3748" />
             </LinearLayout>
 
+            <!-- Hora -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/horaText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:45"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#2D3748" />
+            </LinearLayout>
+
+            <!-- Tratamiento -->
             <LinearLayout
                 android:id="@+id/tipo_cita"
                 android:layout_width="match_parent"
@@ -57,14 +96,15 @@
                     android:src="@drawable/tipo_cita" />
 
                 <TextView
-                    android:id="@+id/tratamientoText"
+                    android:id="@+id/tratamiento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tratamiento"
+                    android:text="Valoración"
                     android:layout_marginStart="8dp"
                     android:textColor="#2D3748" />
             </LinearLayout>
 
+            <!-- Valor -->
             <LinearLayout
                 android:id="@+id/payment"
                 android:layout_width="match_parent"
@@ -75,17 +115,18 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/modalidad" />
+                    android:src="@drawable/ic_pay" />
 
                 <TextView
-                    android:id="@+id/modalidadText"
+                    android:id="@+id/valorCitaText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Modalidad"
+                    android:text="Valor de la consulta"
                     android:layout_marginStart="8dp"
                     android:textColor="#2D3748" />
             </LinearLayout>
 
+            <!-- Paciente -->
             <LinearLayout
                 android:id="@+id/paciente"
                 android:layout_width="match_parent"
@@ -99,46 +140,44 @@
                     android:src="@drawable/ic_user" />
 
                 <TextView
-                    android:id="@+id/nombrePacienteCitaText"
+                    android:id="@+id/nombrePacienteText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Paciente"
+                    android:text="Nombre Paciente 1"
                     android:layout_marginStart="8dp"
                     android:textColor="#2D3748" />
             </LinearLayout>
 
-
         </LinearLayout>
 
-        <!-- COL2 -->
+        <!-- COL2 - Botones de acción -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
             android:gravity="center"
-            android:paddingHorizontal="5dp"
+            android:paddingHorizontal="5dp">
 
-            android:foreground="?attr/selectableItemBackground"
-
-            >
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/editar_cita"
-                android:background="@android:color/transparent"
-       />
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnModificar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorFuente"
-                android:textStyle="bold"
-                android:text="Modificar" />
+                android:text="Editar"
+                android:backgroundTint="#417EF2"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnEliminar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eliminar"
+                android:backgroundTint="#C74040"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 </FrameLayout>

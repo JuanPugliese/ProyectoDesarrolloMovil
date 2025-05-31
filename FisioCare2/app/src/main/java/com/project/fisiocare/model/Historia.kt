@@ -1,6 +1,6 @@
 package com.project.fisiocare.model
 
-data class Factura(
+data class Historia(
     val id: String = "",
     val fecha: String = "",
     val hora: String = "",
@@ -10,6 +10,6 @@ data class Factura(
     val documento: String = "",
     val telefono: String = "",
     val correo: String = "",
-    val razonSocial: String = "",
-    val nit: String = ""
+    val profesional: String = "",
+    val matricula: String = ""
 )

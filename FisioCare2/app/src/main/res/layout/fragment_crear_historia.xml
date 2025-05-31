@@ -11,14 +11,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".fragments.CrearFacturaFragment">
+        tools:context=".fragments.CrearHistoriaFragment">
 
         <!-- TÍTULO -->
         <TextView
             android:id="@+id/tituloFormulario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Formulario de Factura"
+            android:text="Historia Clínica"
             android:textColor="@color/bottom_nav_text_color"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -34,36 +34,33 @@
             android:padding="16dp"
             android:layout_marginTop="20dp">
 
-            <!-- Tus campos (nombre, documento, etc.) aquí -->
+            <!-- Datos del Paciente -->
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Nombre_completo"
+                android:text="Nombre completo"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
             <EditText
-                android:id="@+id/idNombre"
+                android:id="@+id/inputValor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nombre_completo"
-                android:inputType="text"
-                android:textSize="14sp"/>
+                android:hint="Valor"
+                android:inputType="numberDecimal"/>
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="@string/n_mero_de_documento"
+                android:text="Número de documento"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
             <EditText
                 android:id="@+id/idDocumento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/n_mero_de_documento"
+                android:hint="Documento de identidad"
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:paddingVertical="12dp"
@@ -73,27 +70,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="@string/n_mero_de_tel_fono"
+                android:text="Teléfono"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
             <EditText
                 android:id="@+id/idTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/n_mero_de_tel_fono"
+                android:hint="Número de contacto"
                 android:inputType="number|phone"
                 android:minHeight="48dp"
                 android:paddingVertical="12dp"
                 android:textSize="14sp" />
 
-
-
+            <!-- Datos Profesional -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Profesional"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/profesionalInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del profesional"
+                android:inputType="text"
+                android:textSize="14sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="@string/tratamiento"
+                android:text="Motivo de Consulta"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/matriculaInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el motivo de consulta"
+                android:inputType="number"
+                android:textSize="14sp"/>
+
+            <!-- Tratamiento -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Tratamiento"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -110,49 +136,6 @@
                 android:padding="12dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/valor_de_la_cita"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/inputValor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/valor_de_la_cita"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:paddingVertical="12dp"
-                android:textSize="14sp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/factura_electr_nica"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/selectorFE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_select"
-                android:drawableEnd="@drawable/ic_dropdown"
-                android:dropDownHeight="wrap_content"
-                android:dropDownVerticalOffset="4dp"
-                android:hint="Seleccione una opción"
-                android:inputType="none"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textSize="14sp"/>
-
-
 
             <!-- Botones -->
             <LinearLayout
@@ -184,6 +167,5 @@
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

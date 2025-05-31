@@ -2,16 +2,13 @@ package com.project.fisiocare.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.project.fisiocare.repositories.CitaRepository
+import com.project.fisiocare.repositories.HistoriaRepository
 
-class TelemedicinaViewModelFactory(
-    private val repository: CitaRepository
-) : ViewModelProvider.Factory {
-
+class HistoriaViewModelFactory(private val repository: HistoriaRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TelemedicinaViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(HistoriaViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return TelemedicinaViewModel(repository) as T
+            return HistoriaViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

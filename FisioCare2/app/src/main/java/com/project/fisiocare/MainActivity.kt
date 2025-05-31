@@ -7,30 +7,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.project.fisiocare.databinding.ActivityMainBinding
-
-
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        Log.d("findme", "App started")
+        Log.d("MainActivity", "Aplicación iniciada")
 
-        // Adjust padding for punchhole displays
-        ViewCompat.setOnApplyWindowInsetsListener(binding.header) { view0, insets ->
+        // Ajustar padding para notch/punchhole
+        ViewCompat.setOnApplyWindowInsetsListener(binding.header) { view, insets ->
             val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            view0.setPadding(
-                view0.paddingLeft,
+            view.setPadding(
+                view.paddingLeft,
                 statusBarHeight,
-                view0.paddingRight,
-                view0.paddingBottom
+                view.paddingRight,
+                view.paddingBottom
             )
             insets
         }
@@ -39,36 +37,38 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding.bottomNav0.gotoInicio.setOnClickListener {
-            navController.navigate(R.id.inicioFragment)
+        // Configurar navegación
+        binding.bottomNav0.apply {
+            gotoInicio.setOnClickListener {
+                navController.navigate(R.id.inicioFragment)
+            }
+
+
+            gotoHistoria.setOnClickListener {
+                navController.navigate(R.id.consultarHistoriasFragment)
+            }
+
+            gotoPerfil.setOnClickListener {
+                navController.navigate(R.id.perfilFragment)
+            }
         }
 
-        binding.bottomNav0.gotoCitas.setOnClickListener {
-            navController.navigate(R.id.citasFragment)
-        }
-
-        binding.bottomNav0.gotoHistoria.setOnClickListener {
-            navController.navigate(R.id.historiaFragment)
-        }
-
-        binding.bottomNav0.gotoPerfil.setOnClickListener {
-            navController.navigate(R.id.perfilFragment)
-        }
-
-
-        navController.addOnDestinationChangedListener { _, destination, arguments ->
+        // Listener para cambios de pantalla
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             val isLogin = destination.id == R.id.loginFragment
 
             binding.header.visibility = if (isLogin) View.GONE else View.VISIBLE
             binding.bottomNav0.root.visibility = if (isLogin) View.GONE else View.VISIBLE
 
-            val iconResId = arguments?.getInt("icon") ?: R.drawable.placeholder_icon
-            binding.title.text = destination.label
-            binding.toolbarIcon.setImageResource(iconResId)
+            binding.title.text = when (destination.id) {
+                R.id.consultarHistoriasFragment -> "Historias Clínicas"
+                R.id.crearHistoriaFragment -> "Nueva Historia"
+                else -> destination.label
+            }
         }
 
         binding.backBtn.setOnClickListener {
-            navController.navigateUp() // Navigate back when the back button is clicked
+            navController.navigateUp()
         }
     }
 }

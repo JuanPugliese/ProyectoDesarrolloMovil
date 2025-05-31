@@ -19,12 +19,10 @@ class HomeFragment : Fragment() {
         val view = binding.root
 
         binding.navHistoriaClinica.setOnClickListener {
-            view.findNavController().navigate(R.id.action_inicioFragment_to_historiaFragment)
+            view.findNavController().navigate(R.id.action_inicioFragment_to_consultarHistoriasFragment)
         }
 
-        binding.navFacturacion.setOnClickListener {
-            view.findNavController().navigate(R.id.action_inicioFragment_to_consultarfacturasFragment)
-        }
+
 
 
         binding

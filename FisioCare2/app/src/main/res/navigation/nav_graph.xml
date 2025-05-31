@@ -3,55 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
-    <fragment
-        android:id="@+id/telemedicinaFragment"
-        android:name="com.project.fisiocare.fragments.TelemedicinaFragment"
-        android:label="Telemedicina"
-        tools:layout="@layout/fragment_telemedicina" >
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/telemedicina" />
-        <action
-            android:id="@+id/action_telemedicinaFragment_to_salaFragment"
-            app:destination="@id/salaFragment" />
-        <action
-            android:id="@+id/action_telemedicinaFragment_to_agendarCitasFragment"
-            app:destination="@id/agendarCitasFragment" />
-        <action
-            android:id="@+id/action_telemedicinaFragment_to_inicioFragment"
-            app:destination="@id/inicioFragment" />
+    app:startDestination="@id/consultarHistoriasFragment">
 
-    </fragment>
-    <fragment
-        android:id="@+id/salaFragment"
-        android:name="com.project.fisiocare.fragments.SalaFragment"
-        android:label="Telemedicina"
-        tools:layout="@layout/fragment_sala">
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/telemedicina" />
-
-        <action
-            android:id="@+id/action_salaFragment_to_llamadaFragment"
-            app:destination="@id/llamadaFragment"
-            app:popUpTo="@id/telemedicinaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/llamadaFragment"
-        android:name="com.project.fisiocare.fragments.LlamadaFragment"
-        android:label="Telemedicina"
-        tools:layout="@layout/fragment_llamada">
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/telemedicina" />
-        <action
-            android:id="@+id/action_llamadaFragment_to_telemedicinaFragment"
-            app:destination="@id/telemedicinaFragment" />
-    </fragment>
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.project.fisiocare.fragments.HomeFragment"
@@ -62,56 +15,17 @@
             app:argType="reference"
             android:defaultValue="@drawable/logo" />
         <action
-            android:id="@+id/action_inicioFragment_to_telemedicinaFragment"
-            app:destination="@id/telemedicinaFragment" />
-        <action
-            android:id="@+id/action_inicioFragment_to_historiaFragment"
-            app:destination="@id/historiaFragment" />
-        <action
             android:id="@+id/action_inicioFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
         <action
             android:id="@+id/action_inicioFragment_to_usuariosFragment"
             app:destination="@id/usuariosFragment" />
         <action
-            android:id="@+id/action_inicioFragment_to_consultarfacturasFragment"
-            app:destination="@+id/consultarFacturasFragment" />
-        <action
-            android:id="@+id/action_inicioFragment_to_tratamientoFragment"
-            app:destination="@id/tratamientoFragment" />
-        <action
-            android:id="@+id/action_inicioFragment_to_citasFragment"
-            app:destination="@id/citasFragment" />
+            android:id="@+id/action_inicioFragment_to_consultarHistoriasFragment"
+            app:destination="@+id/consultarHistoriasFragment" />
+
     </fragment>
-    <fragment
-        android:id="@+id/citasFragment"
-        android:name="com.project.fisiocare.fragments.CitasFragment"
-        android:label="Citas"
-        tools:layout="@layout/fragment_citas">
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/calendar" />
-        <argument
-            android:name="id_cita"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_citasFragment_to_telemedicinaFragment"
-            app:destination="@id/telemedicinaFragment"/>
-        <action
-            android:id="@+id/action_citasFragment_to_agendarCitasFragment"
-            app:destination="@id/agendarCitasFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/historiaFragment"
-        android:name="com.project.fisiocare.fragments.HistoriaFragment"
-        android:label="Historia"
-        tools:layout="@layout/fragment_historia">
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/historia_clinica" />
-    </fragment>
+
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.project.fisiocare.fragments.PerfilFragment"
@@ -143,73 +57,41 @@
             app:argType="reference"
             android:defaultValue="@drawable/modalidad" />
     </fragment>
-    <fragment
-        android:id="@+id/agendarCitasFragment"
-        android:name="com.project.fisiocare.fragments.AgendarCitasFragment"
-        android:label="Citas" >
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/calendar" />
-        <action
-            android:id="@+id/action_agendarCitasFragment_to_citasFragment"
-            app:destination="@id/citasFragment" />
-    </fragment>
 
-    <!-- Consultar factura -->
+    <!-- Consultar historia -->
     <fragment
-        android:id="@+id/consultarFacturasFragment"
-        android:name="com.project.fisiocare.fragments.ConsultarFacturasFragment"
+        android:id="@+id/consultarHistoriasFragment"
+        android:name="com.project.fisiocare.fragments.ConsultarHistoriasFragment"
         android:label="Facturas"
-        tools:layout="@layout/fragment_consultar_factura">
+        tools:layout="@layout/fragment_consultar_historia">
         <argument
             android:name="icon"
             app:argType="reference"
             android:defaultValue="@drawable/ic_factura1" />
 
         <action
-            android:id="@+id/action_consultarFacturasFragment_to_crearFacturaFragment"
-            app:destination="@id/crearFacturaFragment" />
+            android:id="@+id/action_consultarHistoriasFragment_to_crearHistoriaFragment"
+            app:destination="@id/crearHistoriaFragment" />
     </fragment>
 
-    <!-- Crear / Modificar factura -->
+    <!-- Crear / Modificar Historia -->
     <fragment
-        android:id="@+id/crearFacturaFragment"
-        android:name="com.project.fisiocare.fragments.CrearFacturaFragment"
+        android:id="@+id/crearHistoriaFragment"
+        android:name="com.project.fisiocare.fragments.CrearHistoriaFragment"
         android:label="Facturas"
-        tools:layout="@layout/fragment_crear_factura">
+        tools:layout="@layout/fragment_crear_historia">
         <argument
             android:name="icon"
             app:argType="reference"
             android:defaultValue="@drawable/ic_factura1" />
 
-        <action
-            android:id="@+id/action_crearFacturaFragment_to_facturaElectronicaFragment"
-            app:destination="@id/facturaElectronicaFragment" />
 
         <action
-            android:id="@+id/action_crearFacturaFragment_to_consultarFacturasFragment"
-            app:destination="@id/consultarFacturasFragment" />
+            android:id="@+id/action_crearHistoriaFragment_to_consultarHistoriasFragment"
+            app:destination="@id/consultarHistoriasFragment" />
     </fragment>
 
-    <!-- Factura Electrónica factura -->
-    <fragment
-        android:id="@+id/facturaElectronicaFragment"
-        android:name="com.project.fisiocare.fragments.FacturaElectronicaFragment"
-        android:label="Facturas"
-        tools:layout="@layout/fragment_factura_electronica">
-        <argument
-            android:name="icon"
-            app:argType="reference"
-            android:defaultValue="@drawable/ic_factura1" />
 
-        <action
-            android:id="@+id/action_facturaElectronicaFragment_to_consultarFacturasFragment"
-            app:destination="@id/consultarFacturasFragment" />
-        <action
-            android:id="@+id/action_facturaElectronicaFragment_to_crearFacturaFragment"
-            app:destination="@id/crearFacturaFragment" />
-    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.project.fisiocare.fragments.LoginFragment"

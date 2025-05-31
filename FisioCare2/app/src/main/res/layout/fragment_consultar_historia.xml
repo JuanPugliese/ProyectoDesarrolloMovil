@@ -1,15 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:contentDescription="Agregar"
+        android:contentDescription="Agregar nueva historia"
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/botonAzul"
         app:tint="@color/white" />
@@ -30,17 +31,16 @@
             android:layout_margin="12dp"
             android:elevation="4dp" />
 
-        <!-- 🧾 LISTADO DE FACTURAS -->
+        <!-- 🏥 LISTADO DE HISTORIAS CLÍNICAS -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFacturas"
+            android:id="@+id/recyclerHistorias"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="12dp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            tools:listitem="@layout/factura_tm" />
-
+            tools:listitem="@layout/historia_tm" />
 
     </LinearLayout>
 
