@@ -79,8 +79,8 @@ class HistoriaAdapter(
 
     fun updateData(newHistorias: List<Historia>) {
         println("🔄 Adapter recibió ${newHistorias.size} historias")
-        historias = newHistorias
-        historiasFiltradas = newHistorias.toList() // Asegúrate de hacer copia
+        this.historias = newHistorias
+        this.historiasFiltradas = newHistorias.toList() // Asegúrate de hacer copia
         notifyDataSetChanged()
 
         // Debug: Verifica el primer elemento
